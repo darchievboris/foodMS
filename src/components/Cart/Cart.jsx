@@ -1,10 +1,11 @@
 import React from 'react';
 import classes from './Cart.module.css';
 import Modal from "../UI/Modal";
+import {onHidden} from "web-vitals/dist/lib/onHidden";
 
 const Cart = (props) => {
     return (
-        <Modal>
+        <Modal onClose={props.onClose}>
             <ul className={classes['cart-items']}>
                 {[{id: 'c1', name: 'Sushi', amount: 2, price: 12.99}].map((item) => (
                     <li key={item.id}>{item.name}</li>))}
@@ -14,7 +15,7 @@ const Cart = (props) => {
                 <span>34.53</span>
             </div>
             <div className={classes.actions}>
-                <button className={classes['button--alt']}>Close</button>
+                <button className={classes['button--alt']} onClick={props.onClose}>Close</button>
                 <button className={classes.button}>Order</button>
             </div>
         </Modal>
